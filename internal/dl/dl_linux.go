@@ -1,4 +1,4 @@
-//go:build linux && !android
+//go:build linux && !android && !cgo
 
 // Linux-specific constants for dynamic library loading.
 //
@@ -10,8 +10,7 @@
 package dl
 
 // Link to libdl.so.2 functions using cgo_import_dynamic.
-// This works under both CGO_ENABLED=0 (where fakecgo provides the cgo runtime)
-// and CGO_ENABLED=1 (where the standard runtime/cgo is linked, see cgo.go).
+// This is used with CGO_ENABLED=0, where fakecgo provides the cgo runtime.
 //
 // Note on glibc >= 2.34: libdl.so.2 is a stub (an empty .so with a versioned
 // symlink to libc.so.6). dlopen/dlsym/dlerror/dlclose all live in libc.so.6
