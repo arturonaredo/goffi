@@ -59,11 +59,6 @@ func Dlsym(handle uintptr, name string) (uintptr, string) {
 	return uintptr(result.value), ""
 }
 
-// Dlerror returns the current thread's dynamic-loader error.
-func Dlerror() string {
-	return dlerrorString(C.dlerror())
-}
-
 func dlerrorString(message *C.char) string {
 	if message == nil {
 		return ""
